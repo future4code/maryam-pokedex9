@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "e0e88b81-6122-4ee5-a909-86f4c69b0f8e",
+		"name": "PokeAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pokemon List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon/:id/",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon",
+						":id",
+						""
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "898"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
