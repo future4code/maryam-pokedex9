@@ -1,11 +1,24 @@
-import React from 'react'
+import React from "react";
+import { useHistory } from "react-router-dom";
 
-function Pokedex ()  {
-    return(
-        <div>
-            Pokedex
-        </div>
-    )
+function Pokedex() {
+  const history = useHistory();
+
+  const voltarPagina = () => {
+    history.goBack();
+  };
+
+  const irParaDetalhes = () => {
+    history.push("/Detalhes");
+  };
+
+  return (
+    <div>
+      <h2>Pokedex</h2>
+      <button onClick={voltarPagina}>Voltar</button>
+      <button onClick={irParaDetalhes}>Detalhes pokemon</button>
+    </div>
+  );
 }
 
-export default Pokedex
+export default Pokedex;
