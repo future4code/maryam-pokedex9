@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import PokeList from "../Components/PokeList";
 
 function Home() {
   const [pokeList, setPokeList] = useState([]);
@@ -12,14 +13,15 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon/?limit=30")
+      .get("https://pokeapi.co/api/v2/pokemon/?limit=20/")
       .then((response) => {
+        console.log(response.data)
         setPokeList(response.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [pokeList]);
+  }, []);
 
   const history = useHistory();
 
@@ -31,7 +33,12 @@ function Home() {
     <div>
       <h2>Home</h2>
       <button onClick={irParaPokedex}>Abrir Pokedex</button>
-      <select onChange={changePokeName}>
+      {pokeList.map((pokemon) => {
+        return <PokeList
+              nome={pokemon.name}
+        />
+      })}
+      {/* <select onChange={changePokeName}>
         <option value={""}>Nenhum</option>
         {pokeList.map((pokemon) => {
           return (
@@ -40,7 +47,7 @@ function Home() {
             </option>
           );
         })}
-      </select>
+      </select> */}
     </div>
   );
 }
