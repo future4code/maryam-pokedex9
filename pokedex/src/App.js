@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 import Home from "./Home/Home";
 import Detalhes from "./Detalhes/Detalhes";
 import Pokedex from "./Pokedex/Pokedex";
 
 function App() {
-
   const [pokeList, setPokeList] = useState([]);
 
   useEffect(() => {
@@ -21,22 +20,20 @@ function App() {
       });
   }, []);
 
-  console.log(pokeList)
+  console.log(pokeList);
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={"/"}>
-          <Home 
-          pokeList={pokeList}
-          />
+          <Home pokeList={pokeList} />
         </Route>
 
-        <Route exact path={"/Pokedex"}>
+        <Route exact path={"/pokedex"}>
           <Pokedex />
         </Route>
 
-        <Route exact path={"/Detalhes"}>
+        <Route exact path={"/pokemon/:name"}>
           <Detalhes />
         </Route>
       </Switch>
