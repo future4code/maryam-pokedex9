@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
-import PokeList from "../Components/PokeList";
+import PokeList from "../Components/PokeList/PokeList";
 
-function Home() {
-  const [pokeList, setPokeList] = useState([]);
-  const [pokeName, setPokeName] = useState("");
+function Home(props) {
+  // const [pokeList, setPokeList] = useState([]);
+  /* const [pokeName, setPokeName] = useState("");
 
   const changePokeName = (event) => {
     setPokeName(event.target.value);
-  };
+  }; */
 
-  useEffect(() => {
+  /* useEffect(() => {
     axios
       .get("https://pokeapi.co/api/v2/pokemon/?limit=20/")
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         setPokeList(response.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, []); */
 
   const history = useHistory();
 
@@ -33,11 +33,13 @@ function Home() {
     <div>
       <h2>Home</h2>
       <button onClick={irParaPokedex}>Abrir Pokedex</button>
-      {pokeList.map((pokemon) => {
-        return <PokeList
+      
+      {props.pokeList.map((pokemon) => {
+        return <PokeList key={pokemon.name}
               nome={pokemon.name}
         />
       })}
+
       {/* <select onChange={changePokeName}>
         <option value={""}>Nenhum</option>
         {pokeList.map((pokemon) => {
