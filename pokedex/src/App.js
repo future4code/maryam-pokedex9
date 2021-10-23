@@ -20,7 +20,7 @@ function App() {
       });
   }, []);
 
-  console.log(pokeList);
+  // console.log(pokeList);
 
   return (
     <BrowserRouter>
