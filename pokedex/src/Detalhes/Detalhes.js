@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-function Detalhes(props) {
+function Detalhes() {
   const history = useHistory();
 
   const voltarPagina = () => {
@@ -18,6 +18,7 @@ function Detalhes(props) {
     axios
       .get(url)
       .then((response) => {
+        console.log(response)
         setDetalhePokemon(response.data);
       })
       .catch((error) => {
@@ -25,7 +26,7 @@ function Detalhes(props) {
       });
   }, []);
 
-  console.log(detalhePokemon);
+  // console.log(detalhePokemon);
 
   return (
     <div>
@@ -34,12 +35,10 @@ function Detalhes(props) {
         <button onClick={voltarPagina}>Voltar</button>
       </header>
       <div>
-        {detalhePokemon !== undefined && (
-          <img src={detalhePokemon.sprites.front_default} />
-        )}
-        {detalhePokemon !== undefined && (
-          <img src={detalhePokemon.sprites.back_default} />
-        )}
+        {/* {detalhePokemon !== undefined && 
+        <img src={detalhePokemon.sprites.front_default} />}
+        {detalhePokemon !== undefined && 
+        <img src={detalhePokemon.sprites.back_default} />} */}
       </div>
       <div>
         <h3>Descrição</h3>
